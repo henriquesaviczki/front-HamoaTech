@@ -13,8 +13,8 @@ export default function Menu({ menus }: any) {
                 <NavContainer >
                     <MenuList >
                         {menus.data?.attributes.link.map((menu: any) => (
-                            <MenuItem>
-                                <li key={menu.id}>
+                            <MenuItem key={menu.id}>
+                                <li >
                                     <a href={menu.url}>{menu.label}</a>
                                 </li>
                             </MenuItem>
