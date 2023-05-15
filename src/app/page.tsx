@@ -3,7 +3,9 @@ import { Conteudo, Conteudo2, Description, Imagem, Imagem2, Imagem21, Imagem3, I
 
 export default async function Home() {
 
-  const pages = await getData();
+  const props = await getData();
+  const pages = props.pages;
+
 
 
 
@@ -61,7 +63,7 @@ export default async function Home() {
           <span >{pages.data?.attributes.conteudo3nocolor}</span>
         </Conteudo2>
         <Imagem2 src={pages.data?.attributes.photose.data[0].attributes.url} />
-        <Imagem21 src={ pages.data?.attributes.photose.data[1].attributes.url} />
+        <Imagem21 src={pages.data?.attributes.photose.data[1].attributes.url} />
         <br />
         <br />
         <br />
@@ -77,7 +79,7 @@ export default async function Home() {
         <br />
         <Imagem3 src={pages.data?.attributes.photoCa.data[0].attributes.url} />
 
-        <Imagem31 src={ pages.data?.attributes.photoCa.data[1].attributes.url} />
+        <Imagem31 src={pages.data?.attributes.photoCa.data[1].attributes.url} />
 
       </PageHome>
 
@@ -88,11 +90,16 @@ export default async function Home() {
 }
 
 async function getData() {
-  const res = await fetch('http://localhost:1337/api/page?populate=*');
+  const pages = await fetch('http://localhost:1337/api/page?populate=*');
 
-  if (!res.ok) {
+  const res = {
+    pages: await pages.json(),
+
+  }
+
+  if (!res) {
     throw new Error('Failed to fetch data');
   }
 
-  return res.json();
+  return res;
 }

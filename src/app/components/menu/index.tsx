@@ -1,14 +1,13 @@
 import { Logo, LogoContainer, MenuItem, MenuList, NavContainer, Navbar } from "./styles";
 
-export default async function Menu() {
-    const menus = await getData();
+export default function Menu({ menus }: any) {
 
     return (
         <Navbar>
             <header >
                 <LogoContainer >
                     <Logo>
-                        <img src={ menus.data?.attributes.logo.data.attributes.url}                        />
+                        <img src={menus.data?.attributes.logo.data.attributes.url}></img>
                     </Logo>
                 </LogoContainer>
                 <NavContainer >
@@ -25,17 +24,4 @@ export default async function Menu() {
             </header>
         </Navbar>
     );
-}
-
-
-
-
-async function getData() {
-    const res = await fetch('http://localhost:1337/api/menu?populate=*');
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch data');
-    }
-
-    return res.json();
 }
