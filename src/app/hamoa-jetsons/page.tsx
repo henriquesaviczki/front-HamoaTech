@@ -1,10 +1,10 @@
 import { Conteudo, Conteudo2, Description, Imagem, Imagem2, Imagem21, Imagem3, Imagem31, PageHome, Title, TitleCarrosel, TitleSmall } from "./styles";
 
 
-export default async function Home() {
+export default async function HamoaJetsons() {
 
   const pages = await getData();
-
+  console.log(pages, 'testee');
 
 
   return (
@@ -17,6 +17,7 @@ export default async function Home() {
           <Title>
             {pages.data?.attributes.hero.heading}
           </Title>
+
           <TitleSmall>
             {pages.data?.attributes.hero.subtitle}
           </TitleSmall>
@@ -28,14 +29,7 @@ export default async function Home() {
           <Description >
             <span>{pages.data?.attributes.hero.description}</span>
             <Imagem src={pages.data?.attributes.photods.data.attributes.url} />
-            {/* <div className={styles.line2} style={{ top: "375px", left: "-80px", transform: "rotate(90deg)" }}></div>
-            <div className={styles.line2} style={{ top: "375px", left: "240px", transform: "rotate(90deg)" }}></div>
-            <div className={styles.line2} style={{ top: "375px", left: "540px", transform: "rotate(90deg)" }}></div>
-            <div  style={{ top: "65px" }}></div>
-            <div className={styles.line} style={{ top: "218px" }}></div>
-            <div className={styles.line} style={{ top: "371px" }}></div>
-            <div className={styles.line} style={{ top: "529px" }}></div>
-            <div className={styles.line} style={{ top: "687px" }}></div> */}
+
             <br />
             <br />
             <br />
@@ -75,7 +69,7 @@ export default async function Home() {
         <br />
         <br />
         <br />
-        <Imagem3 src={pages.data?.attributes.photoCa.data[0].attributes.url} />
+        <Imagem3 src={ pages.data?.attributes.photoCa.data[0].attributes.url} />
 
         <Imagem31 src={ pages.data?.attributes.photoCa.data[1].attributes.url} />
 
