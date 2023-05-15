@@ -40,8 +40,8 @@ export default async function RootLayout({
 }
 async function getData() {
 
-  const footers = await fetch('http://localhost:1337/api/footer?populate=*');
-  const menus = await fetch('http://localhost:1337/api/menu?populate=*');
+  const footers = await fetch('https://hamoa-tech-strapi.onrender.com/api/footer?populate=*');
+  const menus = await fetch('https://hamoa-tech-strapi.onrender.com/api/menu?populate=*');
 
   const res = {
 

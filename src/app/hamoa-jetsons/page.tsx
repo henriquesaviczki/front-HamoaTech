@@ -82,7 +82,7 @@ export default async function HamoaJetsons() {
 }
 
 async function getData() {
-  const res = await fetch('http://localhost:1337/api/page?populate=*');
+  const res = await fetch('https://hamoa-tech-strapi.onrender.com/api/page?populate=*');
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');

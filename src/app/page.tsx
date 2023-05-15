@@ -90,7 +90,7 @@ export default async function Home() {
 }
 
 async function getData() {
-  const pages = await fetch('http://localhost:1337/api/page?populate=*');
+  const pages = await fetch('https://hamoa-tech-strapi.onrender.com/api/page?populate=*');
 
   const res = {
     pages: await pages.json(),
