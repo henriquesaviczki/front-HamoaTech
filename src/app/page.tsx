@@ -5,7 +5,6 @@ import { Button, ImagemCarrosel, ImagemCarrosel2, ImagemFundoKauai, ImagemFundoN
 export default async function Jmd() {
 
   const homes = await getData();
-  console.log(homes, 'aquii');
 
 
   return (

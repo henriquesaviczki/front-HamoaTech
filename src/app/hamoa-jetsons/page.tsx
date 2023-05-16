@@ -4,7 +4,6 @@ import { Conteudo, Conteudo2, Description, Imagem, Imagem2, Imagem21, Imagem3, I
 export default async function HamoaJetsons() {
 
   const pages = await getData();
-  console.log(pages, 'testee');
 
 
   return (
