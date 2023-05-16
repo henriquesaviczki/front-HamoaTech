@@ -1,7 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from './registry';
-import MenuComponent from './components/menu';
 import Footer from './components/footer';
 import Menu from './components/menu';
 

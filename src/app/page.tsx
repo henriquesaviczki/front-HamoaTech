@@ -1,88 +1,110 @@
-import { Conteudo, Conteudo2, Description, Imagem, Imagem2, Imagem21, Imagem3, Imagem31, PageHome, Title, TitleCarrosel, TitleSmall } from "./styles";
+
+import { Button, ImagemCarrosel, ImagemCarrosel2, ImagemFundoKauai, ImagemFundoNoomi, ImagemFundoPricing, ImagemFundoTitle, ImagemNoomi, ImagemTitle, Kauai, PageHome, Pricing, TextCarrosel, TextCarrosel2, TextKauai, TextNoomi, TextPricing, TextTitle, } from "./styles";
 
 
-export default async function Home() {
+export default async function Jmd() {
 
-  const props = await getData();
-  const pages = props.pages;
-
-
+  const homes = await getData();
+  console.log(homes, 'aquii');
 
 
   return (
 
     <>
       <PageHome>
-        <br />
-        <br />
-        <div >
-          <Title>
-            {pages.data?.attributes.hero.heading}
-          </Title>
-          <TitleSmall>
-            {pages.data?.attributes.hero.subtitle}
-          </TitleSmall>
 
-        </div>
+        <ImagemFundoTitle src={homes.data.attributes.imagemfundotitle.data.attributes.url} />
+        <ImagemTitle src={homes.data.attributes.imagemtitle.data.attributes.url} />
 
-        <div >
-          <br />
-          <Description >
-            <span>{pages.data?.attributes.hero.description}</span>
-            <Imagem src={pages.data?.attributes.photods.data.attributes.url} />
-            {/* <div className={styles.line2} style={{ top: "375px", left: "-80px", transform: "rotate(90deg)" }}></div>
-            <div className={styles.line2} style={{ top: "375px", left: "240px", transform: "rotate(90deg)" }}></div>
-            <div className={styles.line2} style={{ top: "375px", left: "540px", transform: "rotate(90deg)" }}></div>
-            <div  style={{ top: "65px" }}></div>
-            <div className={styles.line} style={{ top: "218px" }}></div>
-            <div className={styles.line} style={{ top: "371px" }}></div>
-            <div className={styles.line} style={{ top: "529px" }}></div>
-            <div className={styles.line} style={{ top: "687px" }}></div> */}
-            <br />
-            <br />
-            <br />
-          </Description>
-        </div>
-        <br />
-        <br />
-        <br />
-        <Conteudo>
-          <span >{pages.data?.attributes.hero.conteudo}</span>
-          <span >{pages.data?.attributes.hero.conteudocolor}</span>
-          <span >{pages.data?.attributes.hero.conteudo2}</span>
-        </Conteudo>
-        <br />
-        <br />
-        <Conteudo2>
-          <span >{pages.data?.attributes.conteudo3}</span>
-          <span>{pages.data?.attributes.conteudo3color}</span>
-          <span>{pages.data?.attributes.conteudo31color}</span>
 
-          <br />
-          <br />
-          <span >{pages.data?.attributes.conteudo3nocolor}</span>
-        </Conteudo2>
-        <Imagem2 src={pages.data?.attributes.photose.data[0].attributes.url} />
-        <Imagem21 src={pages.data?.attributes.photose.data[1].attributes.url} />
+        <TextTitle>
+          <span>{homes.data.attributes.title}</span>
+          <h1>{homes.data.attributes.subtitle}</h1>
+          <h2>{homes.data.attributes.subtitlecolorNoomi}</h2>
+          <h3>{homes.data.attributes.description}</h3>
+          <Button>Saiba mais</Button>
+        </TextTitle>
         <br />
         <br />
         <br />
         <br />
         <br />
         <br />
-        <TitleCarrosel>
-          <span>{pages.data?.attributes.hero.titleCarrosel}</span>
 
-        </TitleCarrosel>
-        <br />
-        <br />
-        <br />
-        <Imagem3 src={pages.data?.attributes.photoCa.data[0].attributes.url} />
 
-        <Imagem31 src={pages.data?.attributes.photoCa.data[1].attributes.url} />
+        <ImagemFundoNoomi src={homes.data.attributes.fundo.data.attributes.url} />
+        <ImagemNoomi src={homes.data.attributes.imagemNoomi.data.attributes.url} />
+
+        <TextNoomi>
+          <span>{homes.data.attributes.titleNoomi}</span>
+          <h1>{homes.data.attributes.subtitleNoomi}</h1>
+          <h2>{homes.data.attributes.subtitlecolorNoomi}</h2>
+          <h3>{homes.data.attributes.descriptionNoomi}</h3>
+          <Button>Saiba mais</Button>
+        </TextNoomi>
+
+        <ImagemFundoKauai src={homes.data.attributes.fundo.data.attributes.url} />
+        <Kauai src={homes.data.attributes.kauai.data.attributes.url} />
+        <TextKauai>
+          <span>{homes.data.attributes.content.title}</span>
+          <h1>{homes.data.attributes.content.subtitle}</h1>
+          <h2>{homes.data.attributes.content.textcolor}</h2>
+          <h3>{homes.data.attributes.content.description}</h3>
+          <Button>Saiba mais</Button>
+        </TextKauai>
+
+        <ImagemFundoPricing src={homes.data.attributes.fundo.data.attributes.url} />
+        <Pricing src={homes.data.attributes.pricing.data.attributes.url} />
+
+        <TextPricing >
+
+          {homes.data.attributes.texto.map((home: any) => (
+            <div key={home.id}>
+              <span >{home.title}</span>
+              <h1>{home.subtitle}</h1>
+              <h2>{home.textcolor}</h2>
+              <h3>{home.description}</h3>
+              <Button>Saiba mais</Button>
+            </div>
+          ))}
+        </TextPricing>
+
+        <TextCarrosel>
+          {homes.data.attributes.carrocel.map((home: any) => (
+            <div key={home.id}>
+              {home.id === 1 && <span>{home.title}</span>}
+            </div>
+          ))}
+        </TextCarrosel>
+        <ImagemCarrosel>
+
+          {homes.data.attributes.folderimagens.data
+            .filter((home: any) => home.id === 16 || home.id === 15)
+            .map((home: any) => (
+              <div key={home.id}>
+                <img src={home.attributes.url} alt={home.attributes.name} />
+              </div>
+            ))}
+        </ImagemCarrosel>
+        <TextCarrosel2>
+          {homes.data.attributes.carrocel.map((home: any) => (
+            <div key={home.id}>
+              {home.id === 2 && <span>{home.title}</span>}
+            </div>
+          ))}
+        </TextCarrosel2>
+        <ImagemCarrosel2>
+          {homes.data.attributes.folderimagens.data
+            .filter((home: any) => home.id === 17 || home.id === 18 || home.id === 19 || home.id === 20 || home.id === 21)
+            .map((home: any) => (
+              <div key={home.id}>
+                <img src={home.attributes.url} alt={home.attributes.name} />
+              </div>
+            ))}
+
+        </ImagemCarrosel2>
 
       </PageHome>
-
     </>
 
   );
@@ -90,16 +112,11 @@ export default async function Home() {
 }
 
 async function getData() {
-  const pages = await fetch('https://hamoa-tech-strapi.onrender.com/api/page?populate=*');
+  const res = await fetch('https://hamoa-tech-strapi.onrender.com/api/home?populate=*');
 
-  const res = {
-    pages: await pages.json(),
-
-  }
-
-  if (!res) {
+  if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
 
-  return res;
+  return res.json();
 }
